@@ -11,8 +11,20 @@ link_directories("${SFML_DIR}/lib")
 file(GLOB DLL_FILES "${DLL_FOLDER_PATH}/*.dll")
 file(COPY ${DLL_FILES} DESTINATION ${CMAKE_BINARY_DIR})
 
-add_executable(TicTacToe src/main.cpp)
+set(SOURCES
+    ${CMAKE_SOURCE_DIR}/src/Application.cpp
+    ${CMAKE_SOURCE_DIR}/src/Board.cpp
+)
 
-target_link_libraries(TicTacToe sfml-system sfml-window sfml-window sfml-graphics)
+set(HEADERS
+    ${CMAKE_SOURCE_DIR}/include/Application.h
+    ${CMAKE_SOURCE_DIR}/include/Board.h
+)
+
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
+add_executable(TicTacToe src/main.cpp ${SOURCES} ${HEADERS})
+
+target_link_libraries(TicTacToe sfml-system sfml-window sfml-graphics)
 
 
