@@ -32,7 +32,7 @@ void Application::AppUpdate()
 
 void Application::AppRender()
 {
-	this->window->clear(sf::Color::Blue);
+	this->window->clear();
 	this->window->display();
 }
 

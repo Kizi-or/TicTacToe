@@ -11,6 +11,11 @@ link_directories("${SFML_DIR}/lib")
 file(GLOB DLL_FILES "${DLL_FOLDER_PATH}/*.dll")
 file(COPY ${DLL_FILES} DESTINATION ${CMAKE_BINARY_DIR})
 
+set(PNG_FOLDER_PATH "${CMAKE_SOURCE_DIR}/res")
+
+file(GLOB PNG_FILES "${PNG_FOLDER_PATH}/*.png")
+file(COPY ${PNG_FILES} DESTINATION "${CMAKE_BINARY_DIR}/res")
+
 set(SOURCES
     ${CMAKE_SOURCE_DIR}/src/Application.cpp
     ${CMAKE_SOURCE_DIR}/src/Board.cpp
@@ -23,9 +28,15 @@ set(HEADERS
     ${CMAKE_SOURCE_DIR}/include/Block.h
 )
 
+set(TEXTURE_FILES
+    "${CMAKE_SOURCE_DIR}/res/empty.png"
+    "${CMAKE_SOURCE_DIR}/res/circle.png"
+    "${CMAKE_SOURCE_DIR}/res/x.png"
+)
+
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-add_executable(TicTacToe src/main.cpp ${SOURCES} ${HEADERS})
+add_executable(TicTacToe src/main.cpp ${SOURCES} ${HEADERS} ${TEXTURE_FILES})
 
 target_link_libraries(TicTacToe sfml-system sfml-window sfml-graphics)
 
