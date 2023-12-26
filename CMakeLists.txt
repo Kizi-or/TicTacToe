@@ -14,11 +14,13 @@ file(COPY ${DLL_FILES} DESTINATION ${CMAKE_BINARY_DIR})
 set(SOURCES
     ${CMAKE_SOURCE_DIR}/src/Application.cpp
     ${CMAKE_SOURCE_DIR}/src/Board.cpp
+    ${CMAKE_SOURCE_DIR}/src/Block.cpp
 )
 
 set(HEADERS
     ${CMAKE_SOURCE_DIR}/include/Application.h
     ${CMAKE_SOURCE_DIR}/include/Board.h
+    ${CMAKE_SOURCE_DIR}/include/Block.h
 )
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
