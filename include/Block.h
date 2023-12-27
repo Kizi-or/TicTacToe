@@ -1,5 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+
 class Block
 {
 private:
@@ -10,4 +11,5 @@ private:
 public:
 	Block(int x, int y);
 	void SetSprite(sf::Texture& texture);
+	const sf::Sprite GetSprite() const;
 };

@@ -33,6 +33,7 @@ void Application::AppUpdate()
 void Application::AppRender()
 {
 	this->window->clear();
+	DrawBoard();
 	this->window->display();
 }
 
@@ -47,4 +48,8 @@ void Application::AppPollEvents()
 			this->board = std::make_unique<Board>();
 		}
 	}
+}
+void Application::DrawBoard()
+{
+	this->board->DrawBlocksOnScreen(this->window);
 }
