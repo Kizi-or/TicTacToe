@@ -11,10 +11,11 @@ void Block::SetSprite(sf::Texture& texture) { this->sprite.setTexture(texture); 
 
 const sf::Sprite Block::GetSprite() const { return this->sprite; }
 
-void Block::SetTypeOfBlock(sf::Texture& texture)
+void Block::SetTypeOfBlock(sf::Texture& texture,const TypeOfBlock& typeOfBlock)
 {
 	SetSprite(texture);
-	blockClosed = true;
+	blockNotClosed = false;
+	this->typeOfBlock = typeOfBlock;
 }
 
-const bool Block::GetStateOfBlock() const { return blockClosed; }
+const bool Block::GetStateOfBlock() const { return blockNotClosed; }
