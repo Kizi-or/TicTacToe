@@ -7,6 +7,14 @@ Block::Block(int x, int y)
 	this->sprite.setPosition(x, y);
 }
 
-void Block::SetSprite(sf::Texture& texture) {this->sprite.setTexture(texture);}
+void Block::SetSprite(sf::Texture& texture) { this->sprite.setTexture(texture); }
 
-const sf::Sprite Block::GetSprite() const {return this->sprite;}
+const sf::Sprite Block::GetSprite() const { return this->sprite; }
+
+void Block::SetTypeOfBlock(sf::Texture& texture)
+{
+	SetSprite(texture);
+	blockClosed = true;
+}
+
+const bool Block::GetStateOfBlock() const { return blockClosed; }

@@ -47,6 +47,9 @@ void Application::AppPollEvents()
 		if (this->event.type == sf::Event::KeyPressed && this->event.key.code == sf::Keyboard::M) {
 			this->board = std::make_unique<Board>();
 		}
+		if (this->event.type == sf::Event::MouseButtonPressed && this->event.mouseButton.button == sf::Mouse::Left) {
+			this->board->CheckClick(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
+		}
 	}
 }
 void Application::DrawBoard()

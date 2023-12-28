@@ -6,13 +6,20 @@
 #include "SFML/Graphics.hpp"
 #include "Block.h"
 
+enum class Player
+{
+	PlayerX,
+	PlayerO
+};
+
 class Board {
+
 private:
 	std::vector<Block> blocks;
 	sf::Texture textureEmpty;
 	sf::Texture textureCircle;
 	sf::Texture textureX;
-
+	Player player;
 
 	static constexpr int countOfBlocks = 9;
 	static constexpr int maxRangeOfBlocks = 3;
@@ -23,4 +30,6 @@ private:
 public:
 	Board();
 	void DrawBlocksOnScreen(const std::unique_ptr<sf::RenderWindow>& window);
+	void CheckClick(const sf::Vector2f& clickPosition);
+
 };

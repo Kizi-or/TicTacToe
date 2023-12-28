@@ -25,11 +25,24 @@ Board::Board()
 		block.SetSprite(textureEmpty);
 	}
 
+	player = Player::PlayerX;
+
 }
 
 void Board::DrawBlocksOnScreen(const std::unique_ptr<sf::RenderWindow>& window)
 {
-	for (auto block : blocks) {
+	for (const auto& block : blocks) {
 		window->draw(block.GetSprite());
+	}
+}
+
+void Board::CheckClick(const sf::Vector2f& clickPosition)
+{
+	for (auto& block : blocks) {
+		if (block.GetSprite().getGlobalBounds().contains(clickPosition))
+		{
+			player == Player::PlayerX ? block.SetTypeOfBlock(textureX) : block.SetTypeOfBlock(textureCircle);
+			player == Player::PlayerX ? player = Player::PlayerO : player = Player::PlayerX;
+		}
 	}
 }
