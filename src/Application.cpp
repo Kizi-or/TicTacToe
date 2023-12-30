@@ -41,11 +41,15 @@ void Application::AppPollEvents()
 {
 	while (this->window->pollEvent(this->event)) {
 
-		if (this->event.type == sf::Event::Closed) {
+		if (this->event.type == sf::Event::Closed)
 			this->window->close();
-		}
-		if (this->event.type == sf::Event::KeyPressed && this->event.key.code == sf::Keyboard::M) {
+		if (this->event.type == sf::Event::KeyPressed && this->event.key.code == sf::Keyboard::M)
 			this->board = std::make_unique<Board>();
+		if (this->event.type == sf::Event::MouseButtonPressed && this->event.mouseButton.button == sf::Mouse::Left)
+		{
+			this->board->CheckClick(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
+			this->board->CheckWin(TypeOfBlock::X, this->board->winXInscription);
+			this->board->CheckWin(TypeOfBlock::O, this->board->winOInscription);
 		}
 	}
 }
