@@ -14,8 +14,9 @@ const sf::Sprite Block::GetSprite() const { return this->sprite; }
 void Block::SetTypeOfBlock(sf::Texture& texture,const TypeOfBlock& typeOfBlock)
 {
 	SetSprite(texture);
-	blockNotClosed = false;
+	this->blockNotClosed = false;
 	this->typeOfBlock = typeOfBlock;
 }
 
-const bool Block::GetStateOfBlock() const { return blockNotClosed; }
+const bool Block::GetStateOfBlock() const { return this->blockNotClosed; }
+const TypeOfBlock Block::GetTypeOfBlock() const { return this->typeOfBlock; }

@@ -16,4 +16,5 @@ public:
 	const sf::Sprite GetSprite() const;
 	void SetTypeOfBlock(sf::Texture& texture,const TypeOfBlock& typeOfBlock);
 	const bool GetStateOfBlock() const;
+	const TypeOfBlock GetTypeOfBlock() const;
 };

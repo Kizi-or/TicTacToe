@@ -44,3 +44,35 @@ void Board::CheckClick(const sf::Vector2f& clickPosition)
 }
 
 const bool Board::IsGameOver() const { return isGameOver; }
+
+void Board::CheckWin(TypeOfBlock typeOfBlock, const  std::string& finalInscription)
+{
+	//check rows
+	for (int shiftOfBlockToCheck = 0; shiftOfBlockToCheck < this->maxRangeOfBlocks; shiftOfBlockToCheck++)
+		if (blocks[shiftOfBlockToCheck].GetTypeOfBlock() == typeOfBlock &&
+			blocks[shiftOfBlockToCheck + maxRangeOfBlocks].GetTypeOfBlock() == typeOfBlock &&
+			blocks[shiftOfBlockToCheck + 2 * maxRangeOfBlocks].GetTypeOfBlock() == typeOfBlock)
+		{
+			std::cout << finalInscription << std::endl;
+		}
+	//check columns
+	for (int shiftOfBlockToCheck = 0; shiftOfBlockToCheck < this->maxRangeOfBlocks; ++shiftOfBlockToCheck) {
+		if (blocks[shiftOfBlockToCheck * maxRangeOfBlocks].GetTypeOfBlock() == typeOfBlock &&
+			blocks[shiftOfBlockToCheck * maxRangeOfBlocks + 1].GetTypeOfBlock() == typeOfBlock &&
+			blocks[shiftOfBlockToCheck * maxRangeOfBlocks + 2].GetTypeOfBlock() == typeOfBlock)
+		{
+			std::cout << finalInscription << std::endl;
+		}
+	}
+	if (blocks[0].GetTypeOfBlock() == typeOfBlock &&
+		blocks[4].GetTypeOfBlock() == typeOfBlock &&
+		blocks[8].GetTypeOfBlock() == typeOfBlock) {
+		std::cout << finalInscription << std::endl;
+	}
+
+	if (blocks[2].GetTypeOfBlock() == typeOfBlock &&
+		blocks[4].GetTypeOfBlock() == typeOfBlock &&
+		blocks[6].GetTypeOfBlock() == typeOfBlock) {
+		std::cout << finalInscription << std::endl;
+	}
+}
