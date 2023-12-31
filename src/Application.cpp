@@ -47,6 +47,9 @@ void Application::AppPollEvents()
 			this->board = std::make_unique<Board>();
 		if (this->event.type == sf::Event::MouseButtonPressed && this->event.mouseButton.button == sf::Mouse::Left)
 		{
+			if (this->board->IsGameOver())
+				return;
+
 			this->board->CheckClick(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
 			this->board->CheckWin(TypeOfBlock::X, this->board->winXInscription);
 			this->board->CheckWin(TypeOfBlock::O, this->board->winOInscription);

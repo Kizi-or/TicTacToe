@@ -53,7 +53,7 @@ void Board::CheckWin(TypeOfBlock typeOfBlock, const  std::string& finalInscripti
 			blocks[shiftOfBlockToCheck + maxRangeOfBlocks].GetTypeOfBlock() == typeOfBlock &&
 			blocks[shiftOfBlockToCheck + 2 * maxRangeOfBlocks].GetTypeOfBlock() == typeOfBlock)
 		{
-			std::cout << finalInscription << std::endl;
+			isGameOver = true;
 		}
 	//check columns
 	for (int shiftOfBlockToCheck = 0; shiftOfBlockToCheck < this->maxRangeOfBlocks; ++shiftOfBlockToCheck) {
@@ -61,18 +61,20 @@ void Board::CheckWin(TypeOfBlock typeOfBlock, const  std::string& finalInscripti
 			blocks[shiftOfBlockToCheck * maxRangeOfBlocks + 1].GetTypeOfBlock() == typeOfBlock &&
 			blocks[shiftOfBlockToCheck * maxRangeOfBlocks + 2].GetTypeOfBlock() == typeOfBlock)
 		{
-			std::cout << finalInscription << std::endl;
+			isGameOver = true;
 		}
 	}
 	if (blocks[0].GetTypeOfBlock() == typeOfBlock &&
 		blocks[4].GetTypeOfBlock() == typeOfBlock &&
-		blocks[8].GetTypeOfBlock() == typeOfBlock) {
-		std::cout << finalInscription << std::endl;
+		blocks[8].GetTypeOfBlock() == typeOfBlock) 
+	{
+		isGameOver = true;
 	}
 
 	if (blocks[2].GetTypeOfBlock() == typeOfBlock &&
 		blocks[4].GetTypeOfBlock() == typeOfBlock &&
-		blocks[6].GetTypeOfBlock() == typeOfBlock) {
-		std::cout << finalInscription << std::endl;
+		blocks[6].GetTypeOfBlock() == typeOfBlock) 
+	{
+		isGameOver = true;
 	}
 }
