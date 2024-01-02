@@ -23,7 +23,14 @@ Board::Board()
 	for (auto& block : blocks)
 		block.SetSprite(textureEmpty);
 
-	player = TypeOfPlayer::PlayerX;
+	this->player = TypeOfPlayer::PlayerX;
+
+	this->font.loadFromFile((buildPath / "fonts/arial.ttf").string());
+
+	this->text.setFont(font);
+	this->text.setScale(0.7f, 0.7f);
+	this->text.setString(this->nobodyWon);
+	this->text.setPosition(this->posX + 7,this->blockShift * this->maxRangeOfBlocks);
 
 }
 
@@ -45,7 +52,7 @@ void Board::CheckClick(const sf::Vector2f& clickPosition)
 
 const bool Board::IsGameOver() const { return isGameOver; }
 
-void Board::CheckWin(TypeOfBlock typeOfBlock, const  std::string& finalInscription)
+void Board::CheckWin(TypeOfBlock typeOfBlock,const std::string& finalInscription)
 {
 	//check rows
 	for (int shiftOfBlockToCheck = 0; shiftOfBlockToCheck < this->maxRangeOfBlocks; shiftOfBlockToCheck++)
@@ -53,26 +60,46 @@ void Board::CheckWin(TypeOfBlock typeOfBlock, const  std::string& finalInscripti
 			blocks[shiftOfBlockToCheck + maxRangeOfBlocks].GetTypeOfBlock() == typeOfBlock &&
 			blocks[shiftOfBlockToCheck + 2 * maxRangeOfBlocks].GetTypeOfBlock() == typeOfBlock)
 		{
-			std::cout << finalInscription << std::endl;
+			isGameOver = true;
+			this->text.setString(finalInscription);
 		}
 	//check columns
-	for (int shiftOfBlockToCheck = 0; shiftOfBlockToCheck < this->maxRangeOfBlocks; ++shiftOfBlockToCheck) {
+	for (int shiftOfBlockToCheck = 0; shiftOfBlockToCheck < this->maxRangeOfBlocks; ++shiftOfBlockToCheck)
 		if (blocks[shiftOfBlockToCheck * maxRangeOfBlocks].GetTypeOfBlock() == typeOfBlock &&
 			blocks[shiftOfBlockToCheck * maxRangeOfBlocks + 1].GetTypeOfBlock() == typeOfBlock &&
 			blocks[shiftOfBlockToCheck * maxRangeOfBlocks + 2].GetTypeOfBlock() == typeOfBlock)
 		{
-			std::cout << finalInscription << std::endl;
+			isGameOver = true;
+			this->text.setString(finalInscription);
 		}
-	}
+
 	if (blocks[0].GetTypeOfBlock() == typeOfBlock &&
 		blocks[4].GetTypeOfBlock() == typeOfBlock &&
-		blocks[8].GetTypeOfBlock() == typeOfBlock) {
-		std::cout << finalInscription << std::endl;
+		blocks[8].GetTypeOfBlock() == typeOfBlock) 
+	{
+		isGameOver = true;
+		this->text.setString(finalInscription);
 	}
 
 	if (blocks[2].GetTypeOfBlock() == typeOfBlock &&
 		blocks[4].GetTypeOfBlock() == typeOfBlock &&
-		blocks[6].GetTypeOfBlock() == typeOfBlock) {
-		std::cout << finalInscription << std::endl;
+		blocks[6].GetTypeOfBlock() == typeOfBlock) 
+	{
+		isGameOver = true;
+		this->text.setString(finalInscription);
 	}
+}
+
+void Board::DrawText(const std::unique_ptr<sf::RenderWindow>& window)
+{
+	if(isGameOver)
+		window->draw(this->text);
+}
+
+void Board::CheckFinish()
+{
+	for (const auto& block : blocks)
+		if (block.GetTypeOfBlock() == TypeOfBlock::Empty)
+			return;
+	this->isGameOver = true;
 }

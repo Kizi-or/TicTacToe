@@ -16,6 +16,12 @@ set(PNG_FOLDER_PATH "${CMAKE_SOURCE_DIR}/res")
 file(GLOB PNG_FILES "${PNG_FOLDER_PATH}/*.png")
 file(COPY ${PNG_FILES} DESTINATION "${CMAKE_BINARY_DIR}/res")
 
+set(TTF_FOLDER_PATH "${CMAKE_SOURCE_DIR}/res/fonts")
+
+file(GLOB TTF_FILES "${TTF_FOLDER_PATH}/*.ttf")
+file(COPY ${TTF_FILES} DESTINATION "${CMAKE_BINARY_DIR}/res/fonts")
+
+
 set(SOURCES
     "${CMAKE_SOURCE_DIR}/src/Application.cpp"
     "${CMAKE_SOURCE_DIR}/src/Board.cpp"

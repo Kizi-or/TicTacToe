@@ -17,7 +17,9 @@ private:
 	sf::Texture textureX;
 	TypeOfPlayer player;
 	bool isGameOver = false;
-	std::string winner = "Nobody won";
+	std::string nobodyWon = "Nobody won, press M to refresh";
+	sf::Font font;
+	sf::Text text;
 
 	static constexpr int countOfBlocks = 9;
 	static constexpr int maxRangeOfBlocks = 3;
@@ -26,12 +28,14 @@ private:
 	static constexpr int posY = 0;
 
 public:
-	const std::string winXInscription = "Win player X";
-	const std::string winOInscription = "Win player O";
+	const std::string winXInscription = "Win player X, press M to refresh";
+	const std::string winOInscription = "Win player O, press M to refresh";
 
 	Board();
 	void DrawBlocksOnScreen(const std::unique_ptr<sf::RenderWindow>& window);
 	void CheckClick(const sf::Vector2f& clickPosition);
 	const bool IsGameOver() const;
-	void CheckWin(TypeOfBlock typeOfBlock, const std::string& finalInscription);
+	void CheckWin(TypeOfBlock typeOfBlock,const std::string& finalInscription);
+	void DrawText(const std::unique_ptr<sf::RenderWindow>& window);
+	void CheckFinish();
 };
