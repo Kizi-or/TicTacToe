@@ -33,7 +33,7 @@ void Application::AppUpdate()
 void Application::AppRender()
 {
 	this->window->clear();
-	DrawBoard();
+	this->DrawBoard();
 	this->window->display();
 }
 
@@ -53,10 +53,12 @@ void Application::AppPollEvents()
 			this->board->CheckClick(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
 			this->board->CheckWin(TypeOfBlock::X, this->board->winXInscription);
 			this->board->CheckWin(TypeOfBlock::O, this->board->winOInscription);
+			this->board->CheckFinish();
 		}
 	}
 }
 void Application::DrawBoard()
 {
 	this->board->DrawBlocksOnScreen(this->window);
+	this->board->DrawText(this->window);
 }
