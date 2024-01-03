@@ -7,9 +7,9 @@ Here's the TicTacToe Project. This is a classic game of Tic-Tac-Toe, implemented
 ## View
 
 <p align="center">
-<img src="view/Example1.png" alt="Gameplay Screenshot1" width="33%"/> 
-<img src="view/Example2.png" alt="Gameplay Screenshot2" width="33%"/>
-<img src="view/Example3.png" alt="Gameplay Screenshot3" width="33%"/> 
+<img src="screenshots/Example1.png" alt="Gameplay Screenshot1" width="33%"/> 
+<img src="screenshots/Example2.png" alt="Gameplay Screenshot2" width="33%"/>
+<img src="screenshots/Example3.png" alt="Gameplay Screenshot3" width="33%"/> 
 </p>
 
 ## About Project
