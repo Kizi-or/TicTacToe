@@ -12,6 +12,7 @@ private:
 	sf::VideoMode videoMode;
 	sf::Event event;
 
+	static constexpr char* nameOfGame = "TicTacToe";
 	static constexpr int width = 450;
 	static constexpr int height = 480;
 

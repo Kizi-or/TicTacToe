@@ -29,7 +29,7 @@ Board::Board()
 
 	this->text.setFont(font);
 	this->text.setScale(0.7f, 0.7f);
-	this->text.setString(this->nobodyWon);
+	this->text.setString(this->noBodyWon);
 	this->text.setPosition(this->posX + 7,this->blockShift * this->maxRangeOfBlocks);
 
 }
@@ -52,8 +52,9 @@ void Board::CheckClick(const sf::Vector2f& clickPosition)
 
 const bool Board::IsGameOver() const { return isGameOver; }
 
-void Board::CheckWin(TypeOfBlock typeOfBlock,const std::string& finalInscription)
+void Board::CheckWin(const TypeOfBlock& typeOfBlock,const std::string& finalInscription)
 {
+
 	//check rows
 	for (int shiftOfBlockToCheck = 0; shiftOfBlockToCheck < this->maxRangeOfBlocks; shiftOfBlockToCheck++)
 		if (blocks[shiftOfBlockToCheck].GetTypeOfBlock() == typeOfBlock &&
@@ -73,21 +74,21 @@ void Board::CheckWin(TypeOfBlock typeOfBlock,const std::string& finalInscription
 			this->text.setString(finalInscription);
 		}
 
-	if (blocks[0].GetTypeOfBlock() == typeOfBlock &&
-		blocks[4].GetTypeOfBlock() == typeOfBlock &&
-		blocks[8].GetTypeOfBlock() == typeOfBlock) 
-	{
-		isGameOver = true;
-		this->text.setString(finalInscription);
-	}
+		if (blocks[0 * maxRangeOfBlocks + 0].GetTypeOfBlock() == typeOfBlock &&
+			blocks[1 * maxRangeOfBlocks + 1].GetTypeOfBlock() == typeOfBlock &&
+			blocks[2 * maxRangeOfBlocks + 2].GetTypeOfBlock() == typeOfBlock)
+		{
+			isGameOver = true;
+			this->text.setString(finalInscription);
+		}
 
-	if (blocks[2].GetTypeOfBlock() == typeOfBlock &&
-		blocks[4].GetTypeOfBlock() == typeOfBlock &&
-		blocks[6].GetTypeOfBlock() == typeOfBlock) 
-	{
-		isGameOver = true;
-		this->text.setString(finalInscription);
-	}
+		if (blocks[0 * maxRangeOfBlocks + (maxRangeOfBlocks - 1)].GetTypeOfBlock() == typeOfBlock &&
+			blocks[1 * maxRangeOfBlocks + (maxRangeOfBlocks - 2)].GetTypeOfBlock() == typeOfBlock &&
+			blocks[2 * maxRangeOfBlocks + (maxRangeOfBlocks - 3)].GetTypeOfBlock() == typeOfBlock)
+		{
+			isGameOver = true;
+			this->text.setString(finalInscription);
+		}
 }
 
 void Board::DrawText(const std::unique_ptr<sf::RenderWindow>& window)

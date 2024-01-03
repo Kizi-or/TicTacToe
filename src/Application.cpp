@@ -10,7 +10,7 @@ void Application::CreateWindow()
 {
 	this->videoMode.height = this->height;
 	this->videoMode.width = this->width;
-	this->window = std::make_unique<sf::RenderWindow>(this->videoMode, "TicTacToe");
+	this->window = std::make_unique<sf::RenderWindow>(this->videoMode, nameOfGame);
 	this->window->setFramerateLimit(60);
 }
 

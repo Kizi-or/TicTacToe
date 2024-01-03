@@ -41,8 +41,7 @@ set(TEXTURE_FILES
 )
 
 set(ENUMS
-    "${CMAKE_SOURCE_DIR}/include/TypeOfPlayer.h"
-    "${CMAKE_SOURCE_DIR}/include/TypeOfBlock.h"
+    "${CMAKE_SOURCE_DIR}/include/Shared.h"
 )
 
 include_directories(${CMAKE_SOURCE_DIR}/include)

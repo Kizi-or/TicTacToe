@@ -1,6 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
-#include "TypeOfBlock.h"
+#include "Shared.h"
 class Block
 {
 private:

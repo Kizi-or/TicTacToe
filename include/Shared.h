@@ -5,3 +5,8 @@ enum class TypeOfBlock {
 	X,
 	O
 };
+
+enum class TypeOfPlayer {
+	PlayerX,
+	PlayerO
+};
